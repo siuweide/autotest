@@ -11,12 +11,14 @@ def user_login(request):
         password = request.POST.get('password', '')
 
         user = authenticate(request, username=username, password=password)
-        print('user', user)
         if user is not None:
             login(request, user)
             return redirect('/home/')
         else:
-            return render(request, 'login.html')
+            error_message = '账号或密码错误'
+            return render(request, 'login.html', {
+                'error_message': error_message
+            })
     else:
         return render(request, 'login.html')
 
