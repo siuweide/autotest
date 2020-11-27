@@ -55,7 +55,7 @@
                   <!-- Input -->
                   <div class="js-form-message mb-3">
                     <div class="js-focus-state input-group input-group form">
-                      <input type="text" class="form-control form__input" name="username" required="" placeholder="Enter your username" aria-label="Enter your username">
+                      <input type="text" class="form-control form__input" name="username" required="" placeholder="请输入账号" aria-label="Enter your username">
                     </div>
                   </div>
                   <!-- End Input -->
@@ -63,13 +63,13 @@
                   <!-- Input -->
                   <div class="js-form-message mb-3">
                     <div class="js-focus-state input-group input-group form">
-                      <input type="password" class="form-control form__input" name="password" required="" placeholder="Enter your password" aria-label="Enter your password">
+                      <input type="password" class="form-control form__input" name="password" required="" placeholder="请输入密码" aria-label="Enter your password">
                     </div>
                   </div>
                   <!-- End Input -->
                     <div style="color: red">{{ error_message }}</div>
                     {% csrf_token %}
-                  <button type="submit" class="btn btn-block btn-primary">Login</button>
+                  <button type="submit" class="btn btn-block btn-primary">登录</button>
 
                 </form>
               </div>
