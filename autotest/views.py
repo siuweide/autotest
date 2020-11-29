@@ -25,3 +25,6 @@ def user_login(request):
 # 主页
 def home(request):
     return render(request, 'home.html')
+
+def test_page(request):
+    return render(request, 'test.html')
