@@ -32,17 +32,34 @@
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">创建项目</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    ...
+{#                                      <form action="" method="post">#}
+                                        <div class="add-project" style="text-align: left">
+                                            <div class="form-group">
+                                                <label>项目名称</label>
+                                                <input class="form-control" type="text" id="projectName"  placeholder="请输入项目名称"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>描述</label>
+                                                <textarea class="form-control" id="describe" placeholder="请输入描述" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" id="statusCheck">
+                                              <label class="form-check-label" for="defaultCheck1">
+                                                状态
+                                              </label>
+                                            </div>
+                                        </div>
+{#                                      </form>#}
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                    <button type="button" class="btn btn-primary" onclick="addProject()">保存</button>
                                   </div>
                                 </div>
                               </div>
@@ -78,4 +95,26 @@
               </div>
         </div>
     </div>
+    <script type="text/javascript">
+
+    // 创建项目
+    function addProject(){
+        console.log('点击了按钮');
+        var project_name = $("#projectName").val();
+        var describe = $("#describe").val();
+        var statusCheck = document.getElementById("statusCheck").checked;
+        console.log('project_name------->',project_name)
+        $.post("/project/add/", {
+            name: project_name,
+            describe: describe,
+            status: statusCheck
+        }, function (resp) {
+            console.log("resp=>", resp)
+            if(resp.code == 200) {
+                window.location.replace("/project/list/")
+            }
+        })
+    }
+
+    </script>
 {% endblock %}
