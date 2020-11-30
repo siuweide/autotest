@@ -23,12 +23,12 @@
                           <div class="col-sm-6 text-right">
                           <div class="dt-buttons btn-group">
 
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProjectModal">
                               创建
                             </button>
 
-                            <!-- 模态框 -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- 创建项目模态框 -->
+                            <div class="modal fade" id="addProjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -38,24 +38,22 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-{#                                      <form action="" method="post">#}
-                                        <div class="add-project" style="text-align: left">
-                                            <div class="form-group">
-                                                <label>项目名称</label>
-                                                <input class="form-control" type="text" id="projectName"  placeholder="请输入项目名称"/>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>描述</label>
-                                                <textarea class="form-control" id="describe" placeholder="请输入描述" rows="3"></textarea>
-                                            </div>
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" id="statusCheck">
-                                              <label class="form-check-label" for="defaultCheck1">
-                                                状态
-                                              </label>
-                                            </div>
+                                    <div class="add-project" style="text-align: left">
+                                        <div class="form-group">
+                                            <label>项目名称</label>
+                                            <input class="form-control" type="text" id="projectName"  placeholder="请输入项目名称"/>
                                         </div>
-{#                                      </form>#}
+                                        <div class="form-group">
+                                            <label>描述</label>
+                                            <textarea class="form-control" id="describe" placeholder="请输入描述" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" id="statusCheck">
+                                          <label class="form-check-label" for="defaultCheck1">
+                                            状态
+                                          </label>
+                                        </div>
+                                    </div>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
@@ -84,13 +82,68 @@
                         <td>{{ pj.status }}</td>
                         <td class="center">{{ pj.create_time }}</td>
                         <td>
-                          <a href="#"><button class="btn btn-info">修改</button></a>
+                          <button class="btn btn-info" data-toggle="modal" data-target="#updateProjectModal">修改</button>
                           <button type="button" class="btn btn-danger">删除</button>
                         </td>
                       </tr>
+
+                <!-- 修改项目模态框 -->
+                    <div class="modal fade" id="updateProjectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">修改项目</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="add-project" style="text-align: left">
+                                <div class="form-group">
+                                    <label>项目名称</label>
+                                    <input class="form-control" type="text" id="projectName"  placeholder="请输入项目名称"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>描述</label>
+                                    <textarea class="form-control" id="describe" placeholder="请输入描述" rows="3"></textarea>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="statusCheck">
+                                  <label class="form-check-label" for="defaultCheck1">
+                                    状态
+                                  </label>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" onclick="updateProject(pj)">保存</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     {% endfor %}
                     </tbody>
-                  </table></div></div><div class="row be-datatable-footer"><div class="col-sm-5"><div class="dataTables_info" id="table3_info" role="status" aria-live="polite">Showing 1 to 6 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="table3_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="table3_previous"><a href="#" aria-controls="table3" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="table3" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="table3" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item disabled" id="table3_ellipsis"><a href="#" aria-controls="table3" data-dt-idx="3" tabindex="0" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="table3" data-dt-idx="4" tabindex="0" class="page-link">10</a></li><li class="paginate_button page-item next" id="table3_next"><a href="#" aria-controls="table3" data-dt-idx="5" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                  </table>
+                      </div>
+                      </div>
+                      <div class="row be-datatable-footer">
+                          <div class="col-sm-5">
+                              <div class="dataTables_info" id="table3_info" role="status" aria-live="polite">Showing 1 to 6 of 57 entries</div>
+                          </div><div class="col-sm-7">
+                          <div class="dataTables_paginate paging_simple_numbers" id="table3_paginate">
+                              <ul class="pagination">
+                                  <li class="paginate_button page-item previous disabled" id="table3_previous"><a href="#" aria-controls="table3" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                  <li class="paginate_button page-item active"><a href="#" aria-controls="table3" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="table3" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                  <li class="paginate_button page-item disabled" id="table3_ellipsis"><a href="#" aria-controls="table3" data-dt-idx="3" tabindex="0" class="page-link">…</a></li>
+                                  <li class="paginate_button page-item "><a href="#" aria-controls="table3" data-dt-idx="4" tabindex="0" class="page-link">10</a></li>
+                                  <li class="paginate_button page-item next" id="table3_next"><a href="#" aria-controls="table3" data-dt-idx="5" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
                 </div>
               </div>
         </div>
@@ -116,5 +169,9 @@
         })
     }
 
+    // 修改项目
+    function updateProject(pj) {
+        console.log('pid-------------->', pj)
+    }
     </script>
 {% endblock %}

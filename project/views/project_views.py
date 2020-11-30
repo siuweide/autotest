@@ -16,9 +16,15 @@ def add(request):
     status = request.POST.get('status', '')
     if status == 'true':
         real_status = True
+    elif status == 'false':
+        real_status = False
 
     Project.objects.create(name=name, describe=describe, status=real_status)
 
     return JsonResponse({"code": 200, "msg": "success"})
 
+# 修改项目
+def update(request, id):
 
+    # project = Project.objects.filter(pk=id)
+    pass
