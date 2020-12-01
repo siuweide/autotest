@@ -1,6 +1,7 @@
 from django.shortcuts import render
+
 from project.models import Project
-from django.http import JsonResponse
+from project.forms import AddProjectForm
 
 # 项目列表
 def list(request):
@@ -11,20 +12,14 @@ def list(request):
 
 # 创建项目
 def add(request):
-    name = request.POST.get('name', '')
-    describe = request.POST.get('describe', '')
-    status = request.POST.get('status', '')
-    if status == 'true':
-        real_status = True
-    elif status == 'false':
-        real_status = False
-
-    Project.objects.create(name=name, describe=describe, status=real_status)
-
-    return JsonResponse({"code": 200, "msg": "success"})
+    if request.method == 'GET':
+        form = AddProjectForm()
+        return render(request, 'project/add.html', {
+            'form':  form
+        })
 
 # 修改项目
-def update(request, id):
-
-    # project = Project.objects.filter(pk=id)
-    pass
+# def update(request, id):
+#
+#     # project = Project.objects.filter(pk=id)
+#     pass
