@@ -7,5 +7,5 @@ urlpatterns = [
     # 添加项目
     path('add/', project_views.add),
     # 修改项目
-    # path('update/<int:id>/', project_views.update)
+    path('edit/<int:id>/', project_views.edit)
 ]

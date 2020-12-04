@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+{% block title %}
+    <title>编辑项目</title>
+{% endblock %}
+
+{% block home %}
+<div class="card card-border-color card-border-color-primary">
+<div class="card-header card-header-divider">编辑项目
+    <span class="card-subtitle">This is Edit Project</span>
+</div>
+<div class="card-body" style="margin-right: 140px ">
+  <form action="/project/edit/{{ pid }}/" method="post">
+    <div class="form-group row mt-2">
+      <label class="col-3 col-lg-2 col-form-label text-right">项目名称</label>
+      <div class="col-9 col-lg-10">
+          {{ form.name }}
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-3 col-lg-2 col-form-label text-right">项目描述</label>
+      <div class="col-9 col-lg-10">
+        {{ form.describe }}
+      </div>
+    </div>
+    <div class="form-group row pt-1 pb-1">
+      <label class="col-3 col-lg-2 col-form-label text-right">状态</label>
+        <div class="be-checkbox custom-control custom-checkbox" style="margin-left: 15px">
+            {{ form.status }}
+          <label class="custom-control-label" for="check2">
+          </label>
+        </div>
+        <div class="col-sm-6">
+      </div>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-space btn-secondary">关闭</button>
+      <button class="btn btn-space btn-primary" type="submit">修改</button>
+    </div>
+  </form>
+</div>
+</div>
+{% endblock %}
